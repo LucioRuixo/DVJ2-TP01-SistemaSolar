@@ -7,14 +7,14 @@ public class PlanetManager : MonoBehaviour
     const float FirstPlanetDistance = 175.0f;
     const float MinDistance = 30.0f;
     const float MaxDistance = 100.0f;
-    const float MinSize = 0.01f;
+    const float MinSize = 0.05f;
     const float MaxSize = 0.2f;
+
+    public int planetAmount = 0;
 
     public GameObject planetPrefab;
 
-    public int planetAmount = 0;
-    List<GameObject> planets = new List<GameObject>();
-
+    [HideInInspector] public List<GameObject> planets = new List<GameObject>();
     public List<Material> planetMaterials = new List<Material>();
 
     void Start()

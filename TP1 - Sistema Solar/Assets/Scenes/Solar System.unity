@@ -172,7 +172,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -242,7 +242,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 550
+  m_Range: 500
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 1809781281}
   - component: {fileID: 1809781280}
   - component: {fileID: 1809781279}
+  - component: {fileID: 1809781283}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -335,9 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef92b9a59ed59404895b42d87f836baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetAmount: 10
   planetPrefab: {fileID: 3875038156041827677, guid: 95f6c600a2770b048bb49c237c55d3bd,
     type: 3}
-  planetAmount: 5
+  planets: []
   planetMaterials:
   - {fileID: 2100000, guid: f475c480992d0054f8acb293d30ba062, type: 2}
   - {fileID: 2100000, guid: 6f46169f4d39d364495a8d97ef0cc959, type: 2}
@@ -409,3 +411,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809781283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809781278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2d419ec2838574bb40b710756385a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
