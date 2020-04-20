@@ -10,7 +10,12 @@ public class PlanetManager : MonoBehaviour
     const float MinSize = 0.05f;
     const float MaxSize = 0.2f;
 
-    public int planetAmount = 0;
+    public int planetAmount;
+    int materialId;
+
+    float size;
+
+    Vector3 initialPosition;
 
     public GameObject planetPrefab;
 
@@ -21,22 +26,19 @@ public class PlanetManager : MonoBehaviour
 
     void Start()
     {
-        int materialId;
-
-        float size;
-
         for (int i = 0; i < planetAmount; i++)
         {
-            planets.Add(Instantiate(planetPrefab));
-            planets[i].transform.parent = GameObject.Find("Sun").transform;
-
             if (i == 0)
             {
-                planets[i].transform.position = new Vector3(0, 0, FirstPlanetDistance);
+                initialPosition = new Vector3(0, 0, FirstPlanetDistance);
+
+                planets.Add(Instantiate(planetPrefab, initialPosition, Quaternion.identity, GameObject.Find("Sun").transform));
             }
             else
             {
-                planets[i].transform.position = new Vector3(0, 0, planets[i - 1].transform.position.z + Random.Range(MinDistance, MaxDistance));
+                initialPosition = new Vector3(0, 0, planets[i - 1].transform.position.z + Random.Range(MinDistance, MaxDistance));
+
+                planets.Add(Instantiate(planetPrefab, initialPosition, Quaternion.identity, GameObject.Find("Sun").transform));
             }
 
             size = Random.Range(MinSize, MaxSize);
@@ -46,7 +48,7 @@ public class PlanetManager : MonoBehaviour
             while (!planetMaterials[materialId]);
             planets[i].GetComponent<MeshRenderer>().material = planetMaterials[materialId];
 
-            if (i < cameraScript.maxPivotNumber - 1)
+            if (i < cameraScript.maxPivotNumber - 2)
                 cameraScript.pivots.Add(planets[i]);
         }
     }
